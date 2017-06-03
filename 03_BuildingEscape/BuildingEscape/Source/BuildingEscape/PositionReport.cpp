@@ -12,7 +12,6 @@ UPositionReport::UPositionReport()
 	PrimaryComponentTick.bCanEverTick = true;
 
 	// ...
-
 }
 
 

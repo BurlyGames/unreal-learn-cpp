@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<ItemGroup Label="ProjectConfigurations">
 		<ProjectConfiguration Include="BuiltWithUnrealBuildTool|Win32">
 			<Configuration>BuiltWithUnrealBuildTool</Configuration>
@@ -8,17 +8,17 @@
 		</ProjectConfiguration>
 	</ItemGroup>
 	<PropertyGroup Label="Globals">
-		<ProjectGuid>{A99EB97F-801A-4F23-A14F-744D74447428}</ProjectGuid>
+		<ProjectGuid>{AA7E2581-BB6A-4897-867D-523C52EBF871}</ProjectGuid>
 		<Keyword>MakeFileProj</Keyword>
 		<RootNamespace>UE4</RootNamespace>
-       <PlatformToolset>v140</PlatformToolset>
-       <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+       <PlatformToolset>v141</PlatformToolset>
+       <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
        <TargetRuntime>Native</TargetRuntime>
 	</PropertyGroup>
 	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='BuiltWithUnrealBuildTool|Win32'" Label="Configuration">
 		<ConfigurationType>Makefile</ConfigurationType>
-		<PlatformToolset>v140</PlatformToolset>
+		<PlatformToolset>v141</PlatformToolset>
 	</PropertyGroup>
 	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
 	<ImportGroup Label="ExtensionSettings" />
