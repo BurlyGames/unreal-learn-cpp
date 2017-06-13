@@ -4,6 +4,7 @@ The individual Cell object
 
 #pragma once
 #include <string>
+#include <vector>
 
 // To make the syntax Unreal friendly
 using FString = std::string;
@@ -27,10 +28,13 @@ public:
 
 	// public Dictionary<Cell, bool> Links{ get; set; }
 
+	std::vector<Cell> Links;
+
 	// Methods
-	bool IsLinked(Cell);
-	void Link(Cell, bool);
-	void Unlink(Cell, bool);
+	bool IsLinked(Cell* cell);
+	void Link(Cell* cell);
+	void Unlink(Cell* cell);
+
 	// List<Cell> Neighbors();
 	// Distances GetDistances();
 

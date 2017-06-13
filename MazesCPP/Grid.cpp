@@ -1,5 +1,12 @@
 /*
+
 The Grid object implementation
+
+// A 1D array of Cells is defined as a pointer to an array of Cells (Cell*), and is set to point to array of Cells.
+// A 2D array of Cells is defined as a pointer to a pointer to a Cell (Cell**), and is set to point to array of pointers to Cells.
+// A 3D array of Cells is defined as a pointer to a pointer to to a pointer to a Cell (Cell***), and is set to point to array of pointers to an array of pointers to Cells.
+// etc..
+
 */
 
 #pragma once
@@ -17,6 +24,11 @@ Grid::Grid(int32 Rows, int32 Columns)
 
 	Grid::Prepare();
 	Grid::Configure_Cells();
+}
+
+Grid::~Grid()
+{
+	// TODO deallocate the Cell arrays
 }
 
 // Set up a fresh 2D array of Cell instances
