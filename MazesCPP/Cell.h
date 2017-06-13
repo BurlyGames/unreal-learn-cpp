@@ -1,5 +1,5 @@
 /*
-An individual Cell object
+The individual Cell object
 */
 
 #pragma once

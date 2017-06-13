@@ -1,3 +1,7 @@
+/*
+The individual Cell object implementation
+*/
+
 #include "Cell.h"
 
 

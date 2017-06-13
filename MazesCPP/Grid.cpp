@@ -1,5 +1,5 @@
 /*
-The Maze object implementation
+The Grid object implementation
 */
 
 #pragma once
@@ -22,10 +22,9 @@ Grid::Grid(int32 Rows, int32 Columns)
 // Set up a fresh 2D array of Cell instances
 void Grid::Prepare()
 {
-	// Initialize a two-dimensional array of Cells
 	_cells = new Cell*[Grid::_numRows];
 
-	int32 start = 0;
+	int32 _roomNumber = 0;
 
 	// Run through each row, create a Cell array for each
 	for (int row = 0; row < Grid::_numRows; row++)
@@ -35,7 +34,7 @@ void Grid::Prepare()
 		// Initialize each Cell
 		for (int col = 0; col < Grid::_numColumns; col++)
 		{
-			_cells[row][col] = Cell(row, col, "Room " + std::to_string(start++));
+			_cells[row][col] = Cell(row, col, "Room " + std::to_string(_roomNumber++));
 		}
 	}
 
@@ -61,13 +60,13 @@ void Grid::Configure_Cells()
 			else
 				_cells[row][col].South = NULL;
 
-			// If we're not in the first column, then the "west" cell is the same row, last column
+			// If we're not in the first column, then the "west" cell is the same row, previous column
 			if (col > 0)
 				_cells[row][col].West = &_cells[row][col - 1];
 			else
 				_cells[row][col].West = NULL;
 
-			// If we're not in the last column, then the "east" cell is the same row, last column
+			// If we're not in the last column, then the "east" cell is the same row, next column
 			if ((col + 1) < Grid::_numColumns)
 				_cells[row][col].East = &_cells[row][col + 1];
 			else
@@ -78,19 +77,9 @@ void Grid::Configure_Cells()
 	return;
 }
 
-void Grid::Reset()
-{
-	return;
-}
-
 Cell Grid::GetCell(int32 Row, int32 Column)
 {
-	return Cell();
-}
-
-Cell Grid::GetRandomCell()
-{
-	return Cell();
+	return Grid::_cells[Row][Column];
 }
 
 int32 Grid::GetGridSize()
@@ -103,3 +92,43 @@ FString Grid::ContentsOf(Cell Cell)
 	return FString(Cell.Name);
 }
 
+void Grid::OutputString()
+{
+	std::cout << "\n\n";
+
+	// Top Edge
+	std::cout << "+";
+	for (int i = 0; i < Grid::_numColumns; i++)
+	{
+		std::cout << "---+";
+	}
+	std::cout << "\n";
+
+	// Each Row
+	for (int row = 0; row < Grid::_numRows; row++)
+	{
+		FString topline = "|";
+		FString bottomLine = "+";
+
+		for (int col = 0; col < Grid::_numColumns; col++)
+		{
+			// If East is linked then open, else a wall edge
+			//FString body = " " + Grid::_cells[row][col].Name + " ";
+			FString body = "   ";
+			FString east_boundary = "|";
+			topline += body + east_boundary;
+
+			// If South is linked then open, else a wall edige
+			FString south_boundary = "---";
+			FString corner = "+";
+			bottomLine += south_boundary + corner;
+		}
+
+		std::cout << topline << "\n";
+		std::cout << bottomLine << "\n";
+	}
+
+	std::cout << "\n\n";
+
+	return;
+}

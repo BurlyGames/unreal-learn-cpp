@@ -6,16 +6,6 @@
 
 int main()
 {
-	int _numRows = 10;
-	int _numColumns = 3;
-
-	// This pattern for dynamically-allocated, multi-dimensional arrays
-	// type* ipArray for a 1-dimensional array of that type
-	// type** ippArray for a 2-dimensional array of that type
-	// type*** ipppArray for a 3-dimensional array of that type
-	// type**** ippppArray for a 4-dimensional array of that type
-	// etc.
-
 	// The 1D array is defined as a pointer to an array of ints
 	// The 2D array is defined as a pointer to a pointer to an int (int**), and is set to point to array of pointers to ints
 	// The 3D array is defined as a pointer to a pointer to a pointer of an int (int***), and is set to point to an array 
@@ -24,9 +14,19 @@ int main()
 	// No clear way to get the dimension size of dynamically allocated arrays at runtime.
 	// Keep track of the dimensioned size with the object.  Or add an extra element to the array, stash the size at p, and return p+1 to point to the array.
 
-	Grid _grid = Grid(5, 5);
+	Grid _grid = Grid(10, 10);
+	_grid.OutputString();
 
 
+	// This pattern for dynamically-allocated, multi-dimensional arrays
+	// type* ipArray for a 1-dimensional array of that type
+	// type** ippArray for a 2-dimensional array of that type
+	// type*** ipppArray for a 3-dimensional array of that type
+	// type**** ippppArray for a 4-dimensional array of that type
+	// etc.
+
+	int _numRows = 10;
+	int _numColumns = 3;
 
 	// Initialize a two-dimensional array of ints
 	int** ippArray = new int*[_numRows];
