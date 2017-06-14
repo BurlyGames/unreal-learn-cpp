@@ -26,6 +26,14 @@ public:
 	FString ContentsOf(Cell Cell);
 	void OutputString();
 
+	Cell** Cells() { return _cells; }
+
+	// The vertical dimension of this Grid.
+	int32 NumRows() { return _numRows; }
+
+	// The horizontal dimension of this Grid.
+	int32 NumColumns() { return _numColumns; }
+
 private:
 
 	// The 2D array of Cells is defined as a pointer to a pointer to an Cell (Cell**), and is set to point to array of pointers to Cells.

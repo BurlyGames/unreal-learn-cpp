@@ -28,7 +28,7 @@ public:
 
 	// public Dictionary<Cell, bool> Links{ get; set; }
 
-	std::vector<Cell> Links;
+	std::vector<Cell*> Links;
 
 	// Methods
 	bool IsLinked(Cell* cell);

@@ -3,7 +3,7 @@ The individual Cell object implementation
 */
 
 #include "Cell.h"
-
+#include <vector>
 
 Cell::Cell()
 {
@@ -17,7 +17,8 @@ Cell::Cell(int32 Row, int32 Column, FString Name)
 	Cell::_name = Name;
 	Cell::Name = Name;
 
-	//Cell::Links = new std::vector<Cell>();
+	Links.reserve(4);
+
 
 	return;
 }
@@ -28,17 +29,27 @@ bool Cell::IsLinked(Cell* cell)
 {
 	// Check through the local Links collection to see if the passed Cell is present
 
-	return false;
+	std::vector<Cell*>::iterator it = std::find(Links.begin(), Links.end(), cell);
+
+	// Cell was found before end
+	return (it != Links.end());
 }
 
 void Cell::Link(Cell* cell)
 {
-	// Add the passed Cell into the local Links collection
-	std::vector<Cell>::iterator localIterator = Cell::Links.begin();
-	Cell::Links.insert(localIterator, *cell);
+	Links.push_back(cell);
 
-	// From the target Cell, link back to this one
-	cell->Link(this);
+	//Cell::Links.insert(Cell::Links.begin(), *cell);
+	//cell->Link(this);
+	//Links.push_back(*cell);
+
+
+	//// Add the passed Cell into the local Links collection
+	//std::vector<Cell>::iterator localIterator = Cell::Links.begin();
+	//Cell::Links.insert(localIterator, *cell);
+
+	//// From the target Cell, link back to this one
+	//cell->Link(this);
 
 	return;
 }

@@ -128,10 +128,28 @@ void Grid::OutputString()
 			//FString body = " " + Grid::_cells[row][col].Name + " ";
 			FString body = "   ";
 			FString east_boundary = "|";
+			if (Grid::_cells[row][col].IsLinked(Grid::_cells[row][col].East))
+			{
+				east_boundary = " ";
+			}
+			else
+			{
+				east_boundary = "|";
+			}
+
 			topline += body + east_boundary;
 
 			// If South is linked then open, else a wall edige
 			FString south_boundary = "---";
+			if (Grid::_cells[row][col].IsLinked(Grid::_cells[row][col].South))
+			{
+				south_boundary = "   ";
+			}
+			else
+			{
+				south_boundary = "---";
+			}
+
 			FString corner = "+";
 			bottomLine += south_boundary + corner;
 		}

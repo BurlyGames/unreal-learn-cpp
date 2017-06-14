@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include <vector>
+#include <random>
 #include "Grid.h"
 
 int main()
@@ -10,41 +12,48 @@ int main()
 	// No clear way to get the dimension size of dynamically allocated arrays at runtime.
 	// Keep track of the dimensioned size with the object.  Or add an extra element to the array, stash the size at p, and return p+1 to point to the array.
 
-	Grid _grid = Grid(10, 10);
+	Grid* _grid = new Grid(5, 5);
 
 	// BinaryTree maze algorithm
+	std::default_random_engine generator;
 
+	// Loop through each cell
+	for (int row = 0; row < _grid->NumRows(); row++)
+	{
+		for (int col = 0; col < _grid->NumColumns(); col++)
+		{
+			// Build up a list of the North and East neighbors
+			std::vector<Cell*> _neighbors(4);
+			int32 _neighborCount = 0;
 
+			Cell* target = &_grid->Cells()[row][col];
 
-	//public static Grid Load(Grid grid)
-	//{
-	//	var rand = new Random();
+			// If there is a cell to the North, then add it
+			if (_grid->Cells()[row][col].North != NULL)
+			{
+				_neighbors.insert(_neighbors.begin(), _grid->Cells()[row][col].North);
+				_neighborCount++;
+			}
 
-	//	foreach(var cell in grid.GetCells())
-	//	{
-	//		// Build up a list of the North and East neighbors
-	//		var neighbors = new List<Cell>();
-	//		if (cell.North != null) neighbors.Add(cell.North);
-	//		if (cell.East != null) neighbors.Add(cell.East);
+			// If there is a cell to the East, then add it
+			if (_grid->Cells()[row][col].East != NULL)
+			{
+				_neighbors.insert(_neighbors.begin(), _grid->Cells()[row][col].East);
+				_neighborCount++;
+			}
 
-	//		// Pick a random entry from North or East
-	//		if (neighbors.Count > 0)
-	//		{
-	//			var pick = rand.Next(1, neighbors.Count + 1);
+			// Pick an item at random from the N/E neighbors
+			if (_neighborCount > 0)
+			{
+				std::uniform_int_distribution<int> distribution(0, _neighborCount - 1);
+				int dice_roll = distribution(generator);
 
-	//			// Link the random entry
-	//			cell.Link(neighbors[pick - 1], true);
-	//		}
-	//	}
+				target->Link(_neighbors[dice_roll]);
+			}
+		}
+	}
 
-	//	return grid;
-	//}
-
-
-
-
-
-	_grid.OutputString();
+	_grid->OutputString();
 
 	// Keep the window open
 	std::cin.get();
