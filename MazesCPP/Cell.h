@@ -18,32 +18,27 @@ public:
 	Cell();
 	Cell(int32 Row, int32 Column, FString Name);
 
-	FString Name;
-
 	// Members
+	FString Name;
 	Cell* North;
 	Cell* South;
 	Cell* East;
 	Cell* West;
-
-	// public Dictionary<Cell, bool> Links{ get; set; }
-
 	std::vector<Cell*> Links;
+	std::vector<Cell*> Neighbors;
 
 	// Methods
 	bool IsLinked(Cell* cell);
 	void Link(Cell* cell);
 	void Unlink(Cell* cell);
+	std::vector<Cell*> GetNeighbors();
 
-	// List<Cell> Neighbors();
 	// Distances GetDistances();
 
 private:
 
 	int32 _row, _column;
 	FString _name;
-
-	// private Cell[,] _cells;
 
 	Cell* _north;
 	Cell* _south;

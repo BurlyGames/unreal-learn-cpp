@@ -7,6 +7,12 @@ The Grid object implementation
 // A 3D array of Cells is defined as a pointer to a pointer to to a pointer to a Cell (Cell***), and is set to point to array of pointers to an array of pointers to Cells.
 // etc..
 
+// NOTE on getting the Dimension sizes at runtime
+// No clear way to get the dimension size of dynamically allocated arrays at runtime.
+// Keep track of the dimensioned size with the object.  Or add an extra element to the array, stash the size at p, and return p+1 to point to the array.
+
+// TODO Reimplement this using vectors instead of arrays
+
 */
 
 #pragma once
@@ -89,9 +95,9 @@ void Grid::Configure_Cells()
 	return;
 }
 
-Cell Grid::GetCell(int32 Row, int32 Column)
+Cell* Grid::GetCell(int32 Row, int32 Column)
 {
-	return Grid::_cells[Row][Column];
+	return &Grid::_cells[Row][Column];
 }
 
 int32 Grid::GetGridSize()

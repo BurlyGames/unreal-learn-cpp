@@ -18,20 +18,16 @@ class Grid
 public:
 
 	Grid(int32 Rows, int32 Columns);
-
 	~Grid();
 
-	Cell GetCell(int32 Row, int32 Column);
+	// Methods
+	Cell* GetCell(int32 Row, int32 Column);
 	int32 GetGridSize();
 	FString ContentsOf(Cell Cell);
 	void OutputString();
 
 	Cell** Cells() { return _cells; }
-
-	// The vertical dimension of this Grid.
 	int32 NumRows() { return _numRows; }
-
-	// The horizontal dimension of this Grid.
 	int32 NumColumns() { return _numColumns; }
 
 private:
@@ -48,4 +44,3 @@ private:
 	void Prepare();
 	void Configure_Cells();
 };
-
