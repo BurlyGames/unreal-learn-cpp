@@ -12,7 +12,7 @@ int main()
 	// No clear way to get the dimension size of dynamically allocated arrays at runtime.
 	// Keep track of the dimensioned size with the object.  Or add an extra element to the array, stash the size at p, and return p+1 to point to the array.
 
-	Grid* _grid = new Grid(5, 5);
+	Grid* _grid = new Grid(10, 10);
 
 	// BinaryTree maze algorithm
 	std::default_random_engine generator;
@@ -49,6 +49,7 @@ int main()
 				int dice_roll = distribution(generator);
 
 				target->Link(_neighbors[dice_roll]);
+				_neighbors[dice_roll]->Link(target);
 			}
 		}
 	}
