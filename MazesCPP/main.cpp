@@ -23,6 +23,7 @@ int main()
 	getline(std::cin, Response);
 	if (Response != "x")
 	{
+		delete _grid;
 		return main();
 	}
 

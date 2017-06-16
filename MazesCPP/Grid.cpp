@@ -19,7 +19,6 @@ The Grid object implementation
 
 #include "Grid.h"
 #include <iostream>
-#include <new>
 
 using int32 = int;
 
@@ -34,7 +33,14 @@ Grid::Grid(int32 Rows, int32 Columns)
 
 Grid::~Grid()
 {
-	// TODO deallocate the Cell arrays
+	std::cout << "~Grid() called" << std::endl;
+
+	// Deallocate the Cell arrays
+	for (int row = 0; row < Grid::_numRows; row++)
+	{
+		delete[] _cells[row];
+	}
+	delete[] _cells;
 }
 
 // Set up a fresh 2D array of Cell instances
@@ -47,7 +53,7 @@ void Grid::Prepare()
 	// Run through each row, create a Cell array for each
 	for (int row = 0; row < Grid::_numRows; row++)
 	{
-		_cells[row] = new Cell[Grid::_numColumns]; // Does this call the constructor on these Cells?
+		_cells[row] = new Cell[Grid::_numColumns];
 
 		// Initialize each Cell
 		for (int col = 0; col < Grid::_numColumns; col++)
