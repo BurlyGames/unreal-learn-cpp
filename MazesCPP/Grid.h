@@ -23,7 +23,7 @@ public:
 	// Methods
 	Cell* GetCell(int32 Row, int32 Column);
 	int32 GetGridSize();
-	FString ContentsOf(Cell Cell);
+	virtual FString ContentsOf(Cell* Cell);
 	void OutputString();
 
 	Cell** Cells() { return _cells; }
@@ -40,6 +40,9 @@ private:
 
 	// The horizontal dimension of this Grid.
 	int32 _numColumns;
+
+	int32 _defaultRows;
+	int32 _defaultColumns;
 
 	void Prepare();
 	void Configure_Cells();

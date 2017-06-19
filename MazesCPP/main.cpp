@@ -1,7 +1,7 @@
 // main.cpp : Defines the entry point for the console application.
 //
 
-#include "Grid.h"
+#include "DistanceGrid.h"
 #include "BinaryTree.h"
 #include "Sidewinder.h"
 
@@ -10,7 +10,7 @@ using FText = std::string;
 int main()
 {
 	// Generate a new Grid
-	Grid* _grid = new Grid(10, 10);
+	DistanceGrid* _grid = new DistanceGrid(10, 10);
 
 	// Process it by the BinaryTree maze algorithm
 	Sidewinder().Process(_grid);

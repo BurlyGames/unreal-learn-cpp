@@ -142,6 +142,8 @@
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="damdarray.cpp" />
+    <ClCompile Include="DistanceGrid.cpp" />
+    <ClCompile Include="Distances.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sidewinder.cpp" />
@@ -149,6 +151,8 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="DistanceGrid.h" />
+    <ClInclude Include="Distances.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Sidewinder.h" />
   </ItemGroup>

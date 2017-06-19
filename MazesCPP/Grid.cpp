@@ -33,8 +33,6 @@ Grid::Grid(int32 Rows, int32 Columns)
 
 Grid::~Grid()
 {
-	std::cout << "~Grid() called" << std::endl;
-
 	// Deallocate the Cell arrays
 	for (int row = 0; row < Grid::_numRows; row++)
 	{
@@ -111,9 +109,9 @@ int32 Grid::GetGridSize()
 	return _numRows * _numColumns;
 }
 
-FString Grid::ContentsOf(Cell Cell)
+FString Grid::ContentsOf(Cell* Cell)
 {
-	return FString(Cell.Name);
+	return FString("   ");
 }
 
 void Grid::OutputString()
@@ -137,8 +135,7 @@ void Grid::OutputString()
 		for (int col = 0; col < Grid::_numColumns; col++)
 		{
 			// If East is linked then open, else a wall edge
-			//FString body = " " + Grid::_cells[row][col].Name + " ";
-			FString body = "   ";
+			FString body = ContentsOf(&Grid::_cells[row][col]);
 			FString east_boundary = "|";
 			if (Grid::_cells[row][col].IsLinked(Grid::_cells[row][col].East))
 			{
