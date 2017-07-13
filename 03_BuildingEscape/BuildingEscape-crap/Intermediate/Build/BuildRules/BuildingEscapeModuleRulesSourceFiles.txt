@@ -1,3 +1,0 @@
-D:\Dev\Games\cpp\03_BuildingEscape\BuildingEscape-crap\Source\BuildingEscape\BuildingEscape.Build.cs
-D:\Dev\Games\cpp\03_BuildingEscape\BuildingEscape-crap\Source\BuildingEscape.Target.cs
-D:\Dev\Games\cpp\03_BuildingEscape\BuildingEscape-crap\Source\BuildingEscapeEditor.Target.cs
